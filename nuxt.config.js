@@ -13,6 +13,9 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: '/js/global.js', type: 'text/javascript', charset: 'utf-8' }
     ]
   },
   /*
@@ -23,13 +26,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    '~/assets/css/global.css', 'element-ui/lib/theme-chalk/index.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui','@/plugins/vant'
+    { src: '@/plugins/element-ui', ssr: true },
+    { src: '@/plugins/vant', ssr: true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,7 +64,13 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
-    }
+    extend(config, ctx) {
+    },
+    postcss: [
+      require('postcss-pxtorem')({
+        rootValue: 50,
+        propList: ['*']
+      })
+    ]
   }
 }

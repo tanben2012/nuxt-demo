@@ -210,6 +210,9 @@ module.exports = {
       objectsInObjects: false
     }], //大括号内是否允许不必要的空格
     'array-bracket-spacing': [2, 'never'], //是否允许非空数组里面有多余的空格
-    'vue/html-indent': 'off'
+    'vue/html-indent': 'off',
+    'nuxt/no-cjs-in-config': 'off',
+    'no-unused-expressions': 'off',
+    'wrap-iife': 'off'
   }
 }
